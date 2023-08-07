@@ -13,7 +13,11 @@ def len_words_from_file(path):
 
 
 def shuffle_word(word):
-    """"""
+    """
+    Функция перемешивающая слова.
+    :param word: Слово которое перемешиваем.
+    :return: Возвращает перемешаное слово.
+    """
     word_list = list(word)
     random.shuffle(word_list)
     return ''.join(word_list)
@@ -32,6 +36,11 @@ def record_player(path, player_name, player_count):
 
 
 def read_history(path):
+    """
+    Функция записи данныйх в файл.
+    :param path: Путь к файлу.
+    :return: Возвращает количество игр и макс рекород по ним.
+    """
     max = 0
     count = 0
 
