@@ -3,7 +3,7 @@ import random
 
 def len_words_from_file(path):
     """
-    Функция читающая список слов.
+     Функция читающая список слов.
     :param path: Путь до файла.
     :return: Возвращает слово.
     """
