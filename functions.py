@@ -1,56 +1,92 @@
-import random
+import json
+import os
 
 
-def len_words_from_file(path):
+def load_students(path: str) ->dict:
     """
-     Функция читающая список слов.
+    Загружает студентов.
     :param path: Путь до файла.
-    :return: Возвращает слово.
+    :return: Возвращает данные студента.
     """
-    with open(path, 'r', encoding='utf8') as file:
-       words = file.read().strip().split("\n")
-    return words
+
+    if not os.path.exists(path):
+        return []
+    with open(path, 'r', encoding='utf-8') as file:
+        data = json.load(file)
+    return data
 
 
-def shuffle_word(word):
+def load_professions(path: str) ->dict:
     """
-    Функция перемешивающая слова.
-    :param word: Слово которое перемешиваем.
-    :return: Возвращает перемешаное слово.
-    """
-    word_list = list(word)
-    random.shuffle(word_list)
-    return ''.join(word_list)
-
-
-def record_player(path, player_name, player_count):
-    """
-    Функция записи игрока в файл.
+    Загружает профессии.
     :param path: Путь до файла.
-    :param player_name: Имя игрока.
-    :param player_count: Очки игрока.
-    :return: None.
+    :return: Возвращает данные о профессии
     """
-    with open(path, 'a', encoding='utf8') as file:
-        file.write(f'{player_name}  {player_count} \n')
+
+    if not os.path.exists(path):
+        return []
+    with open(path, 'r', encoding='utf-8') as file:
+        data = json.load(file)
+        return data
 
 
-def read_history(path):
+def get_student_by_pk(pk: int) ->dict:
     """
-    Функция записи данныйх в файл.
-    :param path: Путь к файлу.
-    :return: Возвращает количество игр и макс рекород по ним.
+    Из списков студентов достает нужных по pk.
+    :param pk: Данные из функции load_students.
+    :return: Возвращает номер студента.
     """
-    max = 0
-    count = 0
 
-    with open(path, "r", encoding="utf8") as file:
-        for line in file.readlines():
-            count += 1
-            score = int(line.split("  ")[1])
+    all_students = load_students("students.json")
+    for student in all_students:
+        if student['pk'] == pk:
+            return student
 
-            if score > max:
-                max = score
 
-    return f"Всего игр сыграно: {count}\n" \
-           f"Максимальный рекорд: {max}"
+def get_profession_by_title(title: str) ->dict:
+    """
+    Из списка профессий достает нужную по ее названию.
+    :param title: Данные из функции load_professions.
+    :return: Возвращает название профессии.
+    """
+
+    all_professions = load_professions("professions.json")
+    for one_profe in all_professions:
+        if one_profe["title"] == title:
+            return one_profe
+
+
+def check_fitness(student, professions: str) -> dict:
+    """
+    Получает данные студента и профессии.
+    :param student: Данные из функции get_student_by_pk
+    :param professions: Данные из функции get_profession_by_title.
+    :return: Словарь c данными о соответствии студента.
+    """
+
+    set_students = set(student["skills"])
+    set_professions = set(professions["skills"])
+    has_skills = set_students.intersection(set_professions)
+    lacks_skills = set_professions.difference(set_students)
+    fit_percent = round(len(has_skills) / len(lacks_skills) * 100)
+    dict_resalt = {
+        "has": has_skills,
+        "lacks": lacks_skills,
+        "fit_percent": fit_percent
+    }
+    return dict_resalt
+
+
+def show_result(data, name):
+    """
+    Выводит данные студента и профессии.
+    :param data: Данные из функции check_fitness.
+    :param name: Имя студента из списка.
+    :return: Вывод информации о соответствии студентов.
+    """
+    str_has = ", ".join(data['has'])
+    str_lacks = ", ".join(data['lacks'])
+    str_output = f'Пригодность {data["fit_percent"]}\n' \
+                 f'{name} знает {str_has}\n' \
+                 f'{name} не занет {str_lacks}\n'
+    return str_output
