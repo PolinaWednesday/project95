@@ -1,4 +1,0 @@
-poli  10 
-pol  0 
-poli  10 
-polina  10 
