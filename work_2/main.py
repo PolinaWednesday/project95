@@ -6,7 +6,7 @@ from hesclass import *
 user_name = input("Ввведите имя игрока ")
 
 player = Player(user_name)
-#Ссылка
+#Ссылка на слова
 url_name = "https://www.jsonkeeper.com/b/LTJB"
 random_word = load_random_word(url_name)
 
