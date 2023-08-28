@@ -15,7 +15,7 @@ def load_random_word(url):
     :return: Экземпляр класса.
     """
     urllib3.disable_warnings() # не понимаю что это
-    response = requests.get(url=url, verify=False) # вроде бы достает данные из сайта, но я не понимаю как
+    response = requests.get(url=url, verify=False) # достает данные из сайта
     random_word = random.choice(response.json()) # выберет случайное слово
     if response.status_code == 200: # проверка статус кода (200 = ОК)
         instance = BasicWord(random_word["word"], random_word["subwords"])  # создаст экземпляр класса BasicWord
