@@ -3,6 +3,6 @@ from catalog.views import index, contact, home
 
 urlpatterns = [
     path('index/', index),
-    path('contact/', contact),
+    path('contacts/', contact),
     path('', home)
 ]
