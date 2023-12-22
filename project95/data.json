@@ -1,0 +1,30 @@
+[
+  {
+    "model": "catalog.product",
+    "pk": 1,
+    "fields": {
+      "product_name": "Яблоко",
+      "product_title": "Красное",
+      "product_image": "",
+      "product_category": 3,
+      "product_price": 100,
+      "product_created_at": "2023-12-22T19:48:10.782Z",
+      "product_create_added": "2023-12-22T19:48:10.782Z",
+      "in_stock": true
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 2,
+    "fields": {
+      "product_name": "Кабачок",
+      "product_title": "Зеленый",
+      "product_image": "",
+      "product_category": 4,
+      "product_price": 150,
+      "product_created_at": "2023-12-22T19:48:41.446Z",
+      "product_create_added": "2023-12-22T19:48:41.446Z",
+      "in_stock": false
+    }
+  }
+]
