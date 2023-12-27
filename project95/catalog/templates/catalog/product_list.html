@@ -1,0 +1,43 @@
+{% extends "catalog/base.html" %}
+{% load my_tags_catalog %}
+{% block content %}
+{% for object in object_list %}
+<div class="col-md-4">
+    <div class="card mb-4 box-shadow">
+        <img class="card-img-top"
+             src="{{ object.product_image | product_image }}" width="200" height="300"
+             alt="Card image cap">
+        <div class="card-body">
+            <p class="card-text">
+                {% if object.in_stock %}
+                {{ object.product_category | slice:":100" }}
+                {% else %}
+                <span class="text-muted">{{ object.product_category | slice:":100" }}</span>
+                {% endif %}
+            </p>
+                        <p class="card-text">
+                {% if object.in_stock %}
+                {{ object|title | slice:":100" }}
+                {% else %}
+                <span class="text-muted">{{ object|title | slice:":100" }}</span>
+                {% endif %}
+            </p>
+                        <p class="card-text">
+                {% if object.in_stock %}
+                {{ object.product_price |  slice:":100" }} RUB
+                {% else %}
+                <span class="text-muted">{{ object.product_price |  slice:":100" }} RUB</span>
+                {% endif %}
+            </p>
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                    <a href="{% url 'product' object.pk %}" class="btn btn-sm btn-outline-secondary">Посмотреть</a>
+                    <button type="button" class="btn btn-sm btn-outline-secondary">Купить</button>
+                </div>
+                <small class="text-muted"></small>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}
