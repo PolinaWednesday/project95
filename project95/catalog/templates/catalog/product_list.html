@@ -1,8 +1,8 @@
 {% extends "catalog/base.html" %}
 {% load my_tags_catalog %}
 {% block content %}
-<div class="col-12 mb-5">
-   <a class="btn btn-outline-primary" href="{% url 'catalog:create_product' %}">Добавить продукт</a>
+<div class="col-12 mb-5" xmlns="http://www.w3.org/1999/html">
+    <a class="btn btn-outline-primary" href="{% url 'catalog:create_product' %}">Добавить продукт</a>
 </div>
 {% for object in object_list %}
 <div class="col-md-4">
@@ -13,29 +13,26 @@
         <div class="card-body">
             <p class="card-text">
                 {% if object.in_stock %}
-                {{ object.product_category | slice:":100" }}
+                Названия: {{ object.product_name | slice:":100" }}
                 {% else %}
-                <span class="text-muted">{{ object.product_category | slice:":100" }}</span>
+                <span class="text-muted">Названия: {{ object.product_name | slice:":100" }}</span>
                 {% endif %}
             </p>
-                        <p class="card-text">
-                {% if object.in_stock %}
-                {{ object|title | slice:":100" }}
-                {% else %}
-                <span class="text-muted">{{ object|title | slice:":100" }}</span>
+            <h6>Версии:</h6>
+            <ul>
+                {% for version in object.version_set.all %}
+                {% if version.is_active %}
+                <li>{{ version.version_name }}</li>
                 {% endif %}
-            </p>
-                        <p class="card-text">
-                {% if object.in_stock %}
-                {{ object.product_price |  slice:":100" }} RUB
-                {% else %}
-                <span class="text-muted">{{ object.product_price |  slice:":100" }} RUB</span>
-                {% endif %}
-            </p>
+                {% endfor %}
+            </ul>
             <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                    <a href="{% url 'product' object.pk %}" class="btn btn-sm btn-outline-secondary">Посмотреть</a>
-                    <a href="{% url 'update_product' object.pk %}" type="button" class="btn btn-sm btn-outline-secondary">Изменить</a>
+                    <form>
+                        <a href="{% url 'catalog:product' object.pk %}" class="btn btn-sm btn-outline-secondary">Посмотреть</a>
+                        <a href="{% url 'catalog:update_product' object.pk %}" type="button" class="btn btn-sm btn-outline-primary">Редактировать</a>
+                        <a href="{% url 'catalog:delete_product' object.pk %}" class="btn btn-sm btn-outline-danger">Удалить</a>
+                    </form>
                 </div>
                 <small class="text-muted"></small>
             </div>
