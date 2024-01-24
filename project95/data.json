@@ -1,72 +1,186 @@
 [
-  {
-    "model": "catalog.product",
-    "pk": 1,
-    "fields": {
-      "product_name": "Яблоко",
-      "product_title": "Красное",
-      "product_image": "",
-      "product_category": 3,
-      "product_price": 100,
-      "product_created_at": "2023-12-22T19:48:10.782Z",
-      "product_create_added": "2023-12-22T19:48:10.782Z",
-      "in_stock": true
-    }
-  },
-  {
-    "model": "catalog.product",
-    "pk": 2,
-    "fields": {
-      "product_name": "Кабачок",
-      "product_title": "Зеленый",
-      "product_image": "",
-      "product_category": 4,
-      "product_price": 150,
-      "product_created_at": "2023-12-22T19:48:41.446Z",
-      "product_create_added": "2023-12-22T19:48:41.446Z",
-      "in_stock": false
-    }
-  },
-  {
-    "model": "catalog.product",
-    "pk": 3,
-    "fields": {
-      "product_name": "Сыр",
-      "product_title": "С дырками",
-      "product_image": "",
-      "product_category": 5,
-      "product_price": 299,
-      "product_created_at": "2023-12-24T18:40:14.186Z",
-      "product_create_added": "2023-12-24T18:40:14.186Z",
-      "in_stock": true
-    }
-  },
-  {
-    "model": "catalog.product",
-    "pk": 4,
-    "fields": {
-      "product_name": "Бачата",
-      "product_title": "Какой-то хлеб",
-      "product_image": "",
-      "product_category": 7,
-      "product_price": 56,
-      "product_created_at": "2023-12-24T18:40:41.779Z",
-      "product_create_added": "2023-12-24T18:40:41.779Z",
-      "in_stock": true
-    }
-  },
-  {
-    "model": "catalog.product",
-    "pk": 5,
-    "fields": {
-      "product_name": "Пельмени",
-      "product_title": "Пища богов",
-      "product_image": "",
-      "product_category": 11,
-      "product_price": 399,
-      "product_created_at": "2023-12-24T18:51:36.428Z",
-      "product_create_added": "2023-12-24T18:51:36.428Z",
-      "in_stock": true
-    }
-  }
+{
+"model": "catalog.product",
+"pk": 1,
+"fields": {
+"product_name": "Чиабатта",
+"product_title": "Какой-то хлеб",
+"product_image": "products/чиабата_eGNBWc7.jfif",
+"product_category": 1,
+"product_price": 56,
+"product_created_at": "2024-01-21T16:12:29.341Z",
+"product_create_added": "2024-01-21T17:13:53.714Z",
+"in_stock": true
+}
+},
+{
+"model": "catalog.product",
+"pk": 2,
+"fields": {
+"product_name": "Яблоко",
+"product_title": "Красное",
+"product_image": "products/яблоко_2_HLbosbk.jpg",
+"product_category": 2,
+"product_price": 199,
+"product_created_at": "2024-01-21T16:12:50.879Z",
+"product_create_added": "2024-01-21T16:12:50.879Z",
+"in_stock": true
+}
+},
+{
+"model": "catalog.product",
+"pk": 3,
+"fields": {
+"product_name": "Кабачок",
+"product_title": "Зеленый",
+"product_image": "products/кабачок_bz95CUU.jpg",
+"product_category": 3,
+"product_price": 189,
+"product_created_at": "2024-01-21T16:13:22.243Z",
+"product_create_added": "2024-01-21T16:13:22.243Z",
+"in_stock": true
+}
+},
+{
+"model": "catalog.product",
+"pk": 4,
+"fields": {
+"product_name": "Сыр",
+"product_title": "С дырками",
+"product_image": "products/сыр_с_дырками_Idyozx4.webp",
+"product_category": 4,
+"product_price": 399,
+"product_created_at": "2024-01-21T16:14:28.958Z",
+"product_create_added": "2024-01-21T16:14:28.958Z",
+"in_stock": true
+}
+},
+{
+"model": "catalog.product",
+"pk": 5,
+"fields": {
+"product_name": "Пельмени",
+"product_title": "Пища богов!",
+"product_image": "products/пельмень_rMbAamh.jpg",
+"product_category": 5,
+"product_price": 599,
+"product_created_at": "2024-01-21T16:15:12.170Z",
+"product_create_added": "2024-01-21T16:15:12.170Z",
+"in_stock": true
+}
+},
+{
+"model": "catalog.product",
+"pk": 6,
+"fields": {
+"product_name": "Гуава",
+"product_title": "Какой-то фрукт",
+"product_image": "products/гуава_2_S322118.jpg",
+"product_category": 2,
+"product_price": 699,
+"product_created_at": "2024-01-21T16:15:30.145Z",
+"product_create_added": "2024-01-21T16:15:30.145Z",
+"in_stock": true
+}
+},
+{
+"model": "catalog.category",
+"pk": 1,
+"fields": {
+"category_name": "Хлебобулочные изделия",
+"category_title": "Ломают стол"
+}
+},
+{
+"model": "catalog.category",
+"pk": 2,
+"fields": {
+"category_name": "Фрукты",
+"category_title": "Фруктовые"
+}
+},
+{
+"model": "catalog.category",
+"pk": 3,
+"fields": {
+"category_name": "Овощи",
+"category_title": "Овощные"
+}
+},
+{
+"model": "catalog.category",
+"pk": 4,
+"fields": {
+"category_name": "Молочные продукты",
+"category_title": "От парнокопытных"
+}
+},
+{
+"model": "catalog.category",
+"pk": 5,
+"fields": {
+"category_name": "Замороженные продукты",
+"category_title": "Были когда-то не замороженными"
+}
+},
+{
+"model": "catalog.version",
+"pk": 2,
+"fields": {
+"product": 2,
+"version_number": 2,
+"version_name": "Зеленое",
+"is_active": true
+}
+},
+{
+"model": "catalog.version",
+"pk": 3,
+"fields": {
+"product": 3,
+"version_number": 3,
+"version_name": "цукини",
+"is_active": true
+}
+},
+{
+"model": "catalog.version",
+"pk": 4,
+"fields": {
+"product": 4,
+"version_number": 4,
+"version_name": "желтый",
+"is_active": true
+}
+},
+{
+"model": "catalog.version",
+"pk": 5,
+"fields": {
+"product": 5,
+"version_number": 2,
+"version_name": "жареный",
+"is_active": true
+}
+},
+{
+"model": "catalog.version",
+"pk": 6,
+"fields": {
+"product": 6,
+"version_number": 5,
+"version_name": "красная",
+"is_active": true
+}
+},
+{
+"model": "catalog.version",
+"pk": 7,
+"fields": {
+"product": 1,
+"version_number": 1,
+"version_name": "проблема",
+"is_active": true
+}
+}
 ]

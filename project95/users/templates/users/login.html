@@ -1,0 +1,28 @@
+{% extends 'catalog/base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-6"></div>
+    <div class="col-6-md">
+        <div class="card">
+            <div class="card-header"></div>
+            <div class="card-body">
+                <form method="post">
+                    {% csrf_token %}
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div class="alert alert-success">
+                                <p>{{ message }}</p>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                    {{ form.as_p }}
+                    <button type="submit" class="btn btn-success">Войти</button>
+                </form>
+            </div>
+        </div>
+        <div class="card-footer"></div>
+    </div>
+</div>
+
+{% endblock %}
