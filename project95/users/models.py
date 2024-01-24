@@ -1,7 +1,7 @@
 from django.contrib.auth.models import AbstractUser
 from django.contrib.auth.tokens import default_token_generator
 from django.db import models
-# from django.utils.crypto import get_random_string
+
 
 from catalog.models import NULLABLE
 
