@@ -26,12 +26,17 @@
                 {% endif %}
                 {% endfor %}
             </ul>
+            <div class="card-text">
+                {{ object.owner|default:"без продавца" }}
+            </div>
             <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                     <form>
                         <a href="{% url 'catalog:product' object.pk %}" class="btn btn-sm btn-outline-secondary">Посмотреть</a>
+                        {% if object.owner == request.user or request.user.is_superuser %}
                         <a href="{% url 'catalog:update_product' object.pk %}" type="button" class="btn btn-sm btn-outline-primary">Редактировать</a>
                         <a href="{% url 'catalog:delete_product' object.pk %}" class="btn btn-sm btn-outline-danger">Удалить</a>
+                        {% endif %}
                     </form>
                 </div>
                 <small class="text-muted"></small>

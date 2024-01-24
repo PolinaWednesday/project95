@@ -39,16 +39,19 @@
 
             <p class="card-text">
                 {% if object.in_stock %}
-                Цена: {{ object.product_price |  slice:":100" }} RUB
+                Цена: {{ object.product_price | slice:":100" }} RUB
                 {% else %}
                 <span class="text-muted">Цена: {{ object.product_price |  slice:":100" }} RUB</span>
                 {% endif %}
             </p>
+            <div class="card-text">
+                {{ object.owner|default:"без продавца" }}
+            </div>
             <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                     <form>
-                    <a href="/product_list/" class="btn btn-sm btn-outline-info">Вернуться</a>
-                    <button type="button" class="btn btn-sm btn-outline-primary">Купить</button>
+                        <a href="/product_list/" class="btn btn-sm btn-outline-info">Вернуться</a>
+                        <button type="button" class="btn btn-sm btn-outline-primary">Купить</button>
                     </form>
                 </div>
                 <small class="text-muted"></small>

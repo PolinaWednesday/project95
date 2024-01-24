@@ -4,6 +4,8 @@ from catalog.views import ContactView, home, ProductListView, ProductView, Produ
     ProductCreateView, ProductUpdateView, ProductDeleteView
 
 from catalog.apps import CatalogConfig
+from users.views import generate_new_password
+
 app_name = CatalogConfig.name
 
 urlpatterns = [
@@ -16,4 +18,5 @@ urlpatterns = [
     path('create/', ProductCreateView.as_view(), name='create_product'),
     path('product_list/update/<int:pk>', ProductUpdateView.as_view(), name='update_product'),
     path('delete/<int:pk>/', ProductDeleteView.as_view(), name='delete_product'),
+    path('profile/genpassword', generate_new_password, name='generate_new_password'),
 ]
