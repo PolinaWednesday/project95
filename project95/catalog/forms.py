@@ -7,7 +7,7 @@ from catalog.models import Product, Version
 class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
-        fields = ('product_name', 'product_title', 'product_category', 'product_image', 'product_price')
+        fields = ('product_name', 'product_title', 'product_category', 'product_image', 'product_price', 'is_published', 'in_stock')
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
