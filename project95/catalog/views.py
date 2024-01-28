@@ -1,4 +1,6 @@
+from django.conf import settings
 from django.contrib.auth.decorators import login_required
+from django.core.cache import cache
 from django.forms import inlineformset_factory
 from django.http import Http404
 from django.shortcuts import render
@@ -7,6 +9,8 @@ from django.views.generic import ListView, View, CreateView, UpdateView, DeleteV
 from catalog.forms import ProductForm, VersionForm
 from catalog.models import Product, Category, Version
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin, UserPassesTestMixin
+
+from catalog.services import get_categories_cache
 
 
 class ProductListView(LoginRequiredMixin, ListView):
@@ -49,6 +53,11 @@ class ProductCategoryListView(LoginRequiredMixin, ListView):
 
 class CategoryListView(LoginRequiredMixin, ListView):
     model = Category
+
+    def get_context_data(self, **kwargs):
+        context_data = super().get_context_data(**kwargs)
+        context_data['category_list'] = get_categories_cache()
+        return context_data
 
 
 class ProductCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
